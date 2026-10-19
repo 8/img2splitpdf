@@ -44,8 +44,8 @@ export const getParameters = async () => {
   const outputPath = args.output ?? `./${basename(inputPath)}.pdf`
   const ppi = args.ppi
 
-  const margin_lr_cm = 1
-  const margin_tb_cm = 1
+  const margin_lr_cm = 0.5
+  const margin_tb_cm = 0.5
   const margin_lr_dot = cm2dot(margin_lr_cm)
   const margin_tb_dot = cm2dot(margin_tb_cm)
 
