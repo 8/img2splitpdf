@@ -16,3 +16,11 @@ If the pixel per inch (density) of the image is not set correctly, you can set i
 bun i
 bun run main.ts --ppi 128 > out.pdf < in.png
 ```
+
+Use the `--landscape` / `-l` option to use landscape mode.
+
+## Typical
+
+``sh
+bun run main.ts --ppi 128 > out.pdf < in.png
+```
