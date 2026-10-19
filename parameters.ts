@@ -24,6 +24,17 @@ export const parseArgs = (argvWithoutBin: string[]) =>
       type: 'number',
       description: 'Overrides the pixel per inch of the input image',
     })
+    .option('portrait', {
+      type: 'boolean',
+      description: 'Portrait mode',
+      alias: 'p',
+      default: true,
+    })
+    .option('landscape', {
+      type: 'boolean',
+      description: 'Landscape mode',
+      alias: 'l',
+    })
     .parse()
 
 export const getParameters = async () => {
@@ -45,15 +56,22 @@ export const getParameters = async () => {
     bottom: margin_tb_dot,
   }
 
+  const size = {
+    height: cm2dot(29.7),
+    width: cm2dot(21.0),
+  }
+
+  const page = args.landscape
+  ? {
+    height: size.width,
+    width: size.height
+  } : size
+
   const p: Parameters = {
     inputPath,
     outputPath,
     margins,
-    page: {
-      // const a4Size = [ 595.28, 841.89 ]
-      width: cm2dot(21.0),
-      height: cm2dot(29.7),
-    },
+    page,
     ppi,
   }
   return p
